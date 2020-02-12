@@ -1,4 +1,4 @@
-# CIS-530
+# CIS-530: Computational Linguistics
 
 ## Homework 1
 
