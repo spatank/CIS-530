@@ -19,9 +19,6 @@ def read_in_shakespeare():
     document_names: A list of the plays present in the corpus.
     vocab: A list of all tokens in the vocabulary.
   '''
-
-# test Github
-
   tuples = []
 
   with open('will_play_text.csv') as f:
@@ -49,52 +46,80 @@ def get_column_vector(matrix, col_id):
   return matrix[:, col_id]
 
 def create_term_document_matrix(line_tuples, document_names, vocab):
-  '''Returns a numpy array containing the term document matrix for the input lines.
-
-  Inputs:
+    '''Returns a numpy array containing the term document matrix for the input lines.
+    Inputs:
     line_tuples: A list of tuples, containing the name of the document and 
     a tokenized line from that document.
     document_names: A list of the document names
     vocab: A list of the tokens in the vocabulary
-
-  # NOTE: THIS DOCSTRING WAS UPDATED ON JAN 24, 12:39 PM.
-
-  Let m = len(vocab) and n = len(document_names).
-
-  Returns:
+    
+    # NOTE: THIS DOCSTRING WAS UPDATED ON JAN 24, 12:39 PM.
+    
+    Let m = len(vocab) and n = len(document_names).
+    
+    Returns:
     td_matrix: A mxn numpy array where the number of rows is the number of words
-        and each column corresponds to a document. A_ij contains the
-        frequency with which word i occurs in document j.
-  '''
+                and each column corresponds to a document. A_ij contains the
+                frequency with which word i occurs in document j.
+    '''
+    vocab_to_id = dict(zip(vocab, range(0, len(vocab))))
+    docname_to_id = dict(zip(document_names, range(0, len(document_names))))
+    
+    m = len(vocab)
+    n = len(document_names)
+    term_doc_mat = np.zeros([m, n])
+    
+    for line_tuple in line_tuples:
+        doc_name = line_tuple[0]
+        doc_ID = docname_to_id[doc_name] # get ID corresponding to document
+        line = line_tuple[1]
+        for word in line:
+            word_ID = vocab_to_id[word] # get ID corresponding to word
+            term_doc_mat[word_ID][doc_ID] += 1 # increment word count
+    
+    return term_doc_mat
 
-  vocab_to_id = dict(zip(vocab, range(0, len(vocab))))
-  docname_to_id = dict(zip(document_names, range(0, len(document_names))))
-
-  # YOUR CODE HERE
-  return None
-
-def create_term_context_matrix(line_tuples, vocab, context_window_size=1):
-  '''Returns a numpy array containing the term context matrix for the input lines.
-
-  Inputs:
+def create_term_context_matrix(line_tuples, vocab, context_window_size = 1):
+    '''Returns a numpy array containing the term context matrix for the input lines.
+    Inputs:
     line_tuples: A list of tuples, containing the name of the document and 
-    a tokenized line from that document.
+                    a tokenized line from that document.
     vocab: A list of the tokens in the vocabulary
-
-  # NOTE: THIS DOCSTRING WAS UPDATED ON JAN 24, 12:39 PM.
-
-  Let n = len(vocab).
-
-  Returns:
+    
+    # NOTE: THIS DOCSTRING WAS UPDATED ON JAN 24, 12:39 PM.
+    
+    Let n = len(vocab).
+    
+    Returns:
     tc_matrix: A nxn numpy array where A_ij contains the frequency with which
-        word j was found within context_window_size to the left or right of
-        word i in any sentence in the tuples.
+                word j was found within context_window_size to the left or right of
+                word i in any sentence in the tuples.
   '''
+    vocab_to_ID = dict(zip(vocab, range(0, len(vocab))))
+    
+    m = len(vocab)
+    term_term_mat = np.zeros([m, m])
 
-  vocab_to_id = dict(zip(vocab, range(0, len(vocab))))
-
-  # YOUR CODE HERE
-  return None
+    for line_tuple in line_tuples:
+        doc_ID = line_tuple[0]
+        line = line_tuple[1]
+        for word_idx, word in enumerate(line):
+            word_ID = vocab_to_ID[word] # target word
+            for context_word_idx in range(1, context_window_size + 1):
+                # look behind
+                prev_word_idx = word_idx - context_word_idx
+                if prev_word_idx >= 0:
+                    prev_word = line[prev_word_idx]
+                    prev_word_ID = vocab_to_ID[prev_word]
+                    term_term_mat[word_ID, prev_word_ID] += 1
+                # look ahead
+                next_word_idx = word_idx + context_word_idx
+                if next_word_idx < len(line):
+                    next_word = line[next_word_idx]
+                    next_word_ID = vocab_to_ID[next_word]
+                    term_term_mat[word_ID, next_word_ID] += 1
+         
+    return term_term_mat
 
 def create_PPMI_matrix(term_context_matrix):
   '''Given a term context matrix, output a PPMI matrix.
