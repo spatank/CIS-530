@@ -122,23 +122,33 @@ def create_term_context_matrix(line_tuples, vocab, context_window_size = 1):
     return term_term_mat
 
 def create_PPMI_matrix(term_context_matrix):
-  '''Given a term context matrix, output a PPMI matrix.
-  
-  See section 15.1 in the textbook.
-  
-  Hint: Use numpy matrix and vector operations to speed up implementation.
-  
-  Input:
+    '''Given a term context matrix, output a PPMI matrix.
+    See section 15.1 in the textbook.
+    
+    Hint: Use numpy matrix and vector operations to speed up implementation.
+    
+    Input:
     term_context_matrix: A nxn numpy array, where n is
-        the numer of tokens in the vocab.
-  
-  Returns: A nxn numpy matrix, where A_ij is equal to the
-     point-wise mutual information between the ith word
-     and the jth word in the term_context_matrix.
+                            the numer of tokens in the vocab.
+                            
+    Returns: A nxn numpy matrix, where A_ij is equal to the
+                point-wise mutual information between the ith word
+                and the jth word in the term_context_matrix.
   '''       
-  
-  # YOUR CODE HERE
-  return None
+    n = len(term_context_matrix)
+    PPMI_matrix = np.zeros(term_context_matrix.shape)
+    denom = np.sum(term_context_matrix)
+    for i in range(n):
+        p_i_star_num = np.sum(get_row_vector(term_context_matrix, i))
+        p_i_star = p_i_star_num/denom
+        for j in range(n):
+            p_ij_num = term_context_matrix[i][j]
+            p_i_j = p_ij_num/denom
+            p_star_j_num = np.sum(get_column_vector(term_context_matrix, j))
+            p_star_j = p_star_j_num/denom
+            PPMI_matrix = np.maximum(np.log2(p_i_j / (p_i_star * p_star_j)), 0)
+
+    return PPMI_matrix
 
 def create_tf_idf_matrix(term_document_matrix):
   '''Given the term document matrix, output a tf-idf weighted version.
