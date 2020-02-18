@@ -137,15 +137,15 @@ def create_PPMI_matrix(term_context_matrix):
   '''       
     n = len(term_context_matrix)
     PPMI_matrix = np.zeros(term_context_matrix.shape)
-    denom = np.sum(term_context_matrix)
+    denom = np.sum(term_context_matrix) + 1e-6
     for i in range(n):
         p_i_star_num = np.sum(get_row_vector(term_context_matrix, i))
         p_i_star = p_i_star_num/denom
         for j in range(n):
             p_ij_num = term_context_matrix[i][j]
-            p_i_j = p_ij_num/denom
+            p_i_j = (p_ij_num + 1e-6)/denom
             p_star_j_num = np.sum(get_column_vector(term_context_matrix, j))
-            p_star_j = p_star_j_num/denom
+            p_star_j = (p_star_j_num + 1e-6)/denom
             PPMI_matrix = np.maximum(np.log2(p_i_j / (p_i_star * p_star_j)), 0)
 
     return PPMI_matrix
