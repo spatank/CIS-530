@@ -1,0 +1,88 @@
+important.a :: 1 :: authoritative
+important.a :: 2 :: significant
+important.a :: 3 :: crucial
+argument.n :: 1 :: variable casuistry logomachy conflict word summary disceptation arguing argy-bargy statement contestation polemic fight contention adducing address proof argle-bargle policy argumentation give-and-take sum-up sparring disputation difference determiner dispute case firestorm parameter reasoning discussion reference evidence controversy counterargument debate
+argument.n :: 2 :: value
+argument.n :: 3 :: con
+argument.n :: 4 :: clincher
+argument.n :: 5 :: line
+argument.n :: 6 :: tilt
+argument.n :: 7 :: pro
+encounter.v :: 1 :: find see chance be play happen meet replay face receive confront have
+encounter.v :: 2 :: bump
+encounter.v :: 3 :: experience
+encounter.v :: 4 :: intersect
+encounter.v :: 5 :: cross
+activate.v :: 1 :: initiate modify spark trigger change reactivate alter
+activate.v :: 2 :: aerate
+activate.v :: 3 :: pioneer
+activate.v :: 4 :: trip
+activate.v :: 5 :: actuate
+decide.v :: 1 :: adjudicate cause settle have get regularise make will govern seal terminate stimulate adjust determine order orient try resolve influence regularize orientate take regulate purpose rule induce select choose shape measure decree judge
+decide.v :: 2 :: mensurate
+decide.v :: 3 :: end
+decide.v :: 4 :: mold
+solid.a :: 1 :: hearty strong substantial satisfying unanimous
+solid.a :: 2 :: self-colored self-coloured
+solid.a :: 3 :: firm
+solid.a :: 4 :: square
+solid.a :: 5 :: upstanding
+solid.a :: 6 :: whole
+difficulty.n :: 1 :: pinch formidability wrinkle grimness condition tsuris hardness facer rigorousness strain hinderance hardship pisser situation toughness troublesomeness difficultness snorter bitch mire quandary status hindrance ruggedness burdensomeness muddle mess subtlety rigour severeness wall sweat severity asperity predicament killer impediment kink worriment deterrent travail pickle quality plight rigor fix baulk heaviness oppressiveness inconvenience trouble stress problem rattrap pitfall balk jam exertion handicap niceness hole onerousness rigourousness
+difficulty.n :: 2 :: check
+difficulty.n :: 3 :: effortfulness effort
+difficulty.n :: 4 :: job
+audience.n :: 1 :: interview gallery conference grandstand gathering hearing consultation house assemblage
+audience.n :: 2 :: chance opportunity
+audience.n :: 3 :: masses people viewers readership mass
+audience.n :: 4 :: multitude
+remain.v :: 1 :: persist stick linger continue be keep stay rest
+remain.v :: 2 :: bide
+remain.v :: 3 :: abide
+remain.v :: 4 :: stand
+disc.n :: 1 :: discus LP record
+disc.n :: 2 :: audio deadeye round platter floppy dot diskette planchet circle point plate puck disk diaphragm saucer Frisbee token
+disc.n :: 3 :: seventy-eight
+disc.n :: 4 :: 78 L-P
+lose.v :: 1 :: regress worsen retrograde recede retrogress suffer
+lose.v :: 2 :: mislay forget misplace overlook miss
+lose.v :: 3 :: put lay leave set
+lose.v :: 4 :: whiteout white-out
+lose.v :: 5 :: decline drop
+lose.v :: 6 :: position
+lose.v :: 7 :: pose
+lose.v :: 8 :: place
+add.v :: 1 :: numerate enumerate milk impart transfuse concatenate intercalate calculate increase button compound inject qualify alter instill summate compute append supply tinsel modify tally butylate form constitute cipher count enrich sum insert tell number change supplement factor make figure mix reckon cypher bring bestow string say contribute combine punctuate include lend total fortify mark
+add.v :: 2 :: state
+add.v :: 3 :: foot welt
+add.v :: 4 :: tot
+add.v :: 5 :: stud
+add.v :: 6 :: adjoin
+sort.n :: 1 :: make genre individual colour similarity stripe person flavor style antitype kind category like manner brand somebody someone model description form soul flavour ilk color mortal type variety
+sort.n :: 2 :: genus species
+sort.n :: 3 :: sorting
+sort.n :: 4 :: operation
+ask.v :: 1 :: articulate interrogate require involve postulate inquire query request address expect question need intercommunicate solicit govern cost consult formulate enquire necessitate call take compel pry bespeak communicate
+ask.v :: 2 :: phrase word
+ask.v :: 3 :: claim
+ask.v :: 4 :: exact
+ask.v :: 5 :: draw
+ask.v :: 6 :: quest
+ask.v :: 7 :: demand
+hot.a :: 1 :: live
+hot.a :: 2 :: red-hot
+hot.a :: 3 :: raging
+hot.a :: 4 :: spicy
+hot.a :: 5 :: blistering
+arm.n :: 1 :: branch division
+arm.n :: 2 :: subdivision
+arm.n :: 3 :: weapon shirtsleeve flamethrower hatchet blade lance knuckles instrument tomahawk knucks sleeve bow gun missile slasher sling steel shaft spear limb armrest projectile WMD sword knife pike
+arm.n :: 4 :: W.M.D.
+arm.n :: 5 :: projection
+arm.n :: 6 :: brand
+appear.v :: 1 :: peep fulminate
+appear.v :: 2 :: pop materialise flash glow glint re-emerge show cut be materialize glisten loom reappear radiate rise happen gleam make manifest occur glitter lift jump feel erupt execute shine seem break perform sound emerge do look
+appear.v :: 3 :: surface outcrop
+appear.v :: 4 :: rear
+appear.v :: 5 :: basset
+appear.v :: 6 :: beam

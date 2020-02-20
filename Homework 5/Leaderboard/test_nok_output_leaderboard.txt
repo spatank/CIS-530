@@ -1,0 +1,89 @@
+terrible.a :: 1 :: horrendous painful dreaded fearful fearsome awful atrocious dire frightful severe frightening abominable unspeakable dread wicked dreadful horrific direful
+terrible.a :: 2 :: tremendous
+closely.r :: 1 :: tight close
+closely.r :: 2 :: intimately
+closely.r :: 3 :: nearly
+around.r :: 1 :: some about
+around.r :: 2 :: round
+around.r :: 3 :: roughly approximately
+range.n :: 1 :: spectrum Primus hearing compass image eyeshot motley earshot reach ambit assortment grasp smorgasbord palette band contrast view internationalism potpourri chain installation tract internationality miscellanea horizon ken potbelly facility ballpark set capability capableness latitude purview stove extent confines expanse sweep limit salmagundi cookstove scope sight parcel gamut orbit mixture earreach pallet potentiality miscellany variety
+range.n :: 2 :: formation
+stand.v :: 1 :: remain support countenance evaluate brook queue place ramp lay continue bear judge endure digest position let set accept withstand put pose resist stay suffer permit swallow abide allow serve pay wash tolerate align measure fend stomach fight rest service be oppose defend
+stand.v :: 2 :: array
+strain.n :: 1 :: substance fanfare pedigree var. nervousness cradlesong nisus effort meaning stress drift sweat variant breed tenseness injury harm signature theme voice overstrain roulade carol music striving jehad nerves purport tune travail tucket attempt part leitmotiv tension try idea leitmotif tenor endeavor flourish exertion glissando difficulty air straining line song jihad endeavour stock taxon pains form deformation hurt lullaby bloodstock melody trauma
+strain.n :: 2 :: variety
+worthy.a :: 1 :: suitable desirable
+full.a :: 1 :: entire total
+full.a :: 2 :: broad wide-cut wide
+full.a :: 3 :: good
+full.a :: 4 :: replete
+heavy.a :: 1 :: backbreaking gruelling ponderous leaden lumbering toilsome punishing arduous labored weighty grueling laborious
+heavy.a :: 2 :: clayey impenetrable dense
+heavy.a :: 3 :: grievous grave profound
+heavy.a :: 4 :: gravid fleshy
+heavy.a :: 5 :: sullen
+heavy.a :: 6 :: laboured
+heavy.a :: 7 :: large hard great big
+heavy.a :: 8 :: cloggy
+heavy.a :: 9 :: operose
+heavy.a :: 10 :: overweight
+heavy.a :: 11 :: intemperate
+heavy.a :: 12 :: lowering
+heavy.a :: 13 :: enceinte
+heavy.a :: 14 :: threatening
+heavy.a :: 15 :: sonorous sound
+heavy.a :: 16 :: wakeless
+heavy.a :: 17 :: expectant
+soil.n :: 1 :: gumbo tillage mud filth topsoil undersoil subsoil sand ploughland earth permafrost uncleanness podzol bottom grime sward dirtiness mould podsol farmland silt bole tilth overburden dirt badlands wetland loess caliche humus polder territory grunge plowland bottomland greensward till laterite marl scablands mold loam regosol turf ground grease clay hardpan clunch wiesenboden coastland rangeland land stain sod
+soil.n :: 2 :: object
+blow.n :: 1 :: pound knockdown occurrent whip whiplash whiff reversal reverse hammering hammer KO C jolt sandblast insufflation cocaine backhander smacking bang snow happening boot blip wind belt coke kick smash thrust bash jounce thwack whack poke cocain swat kayo rap shock kicking bluster slug setback exhalation clout puff expiration occurrence bump sideswipe smack impact stinger lash swing smacker uppercut box clip wallop surprise biff stroke slap blast knockout strike pounding gust counterblow lick tap jar shot punch concussion buffeting knock stab whammy thump
+blow.n :: 2 :: whang
+well.r :: 1 :: easily comfortably advantageously intimately
+well.r :: 2 :: good
+well.r :: 3 :: considerably substantially
+way.n :: 1 :: category stairway artefact escape pick selection clearance course headroom journey position property lane salvation tool idiom condition hadith mode lifestyle houseroom heading distance status journeying effectuation signature aim seats touch life-style watercourse voice seating room qibla expedient road direction drape staircase part parking means access tooth wings dint fashion waterway choice Sunnah ambages style Sunna path tendency wise trend route percentage itinerary artifact portion instrument setup approach bearing passage share headway response lebensraum warpath form manner implementation fit
+way.n :: 2 :: agency
+true.a :: 1 :: unfeigned genuine
+true.a :: 2 :: dependable reliable
+true.a :: 3 :: truthful honest
+true.a :: 4 :: straight
+true.a :: 5 :: rightful
+true.a :: 6 :: lawful
+true.a :: 7 :: on-key
+acute.a :: 1 :: piercing sharp needlelike keen knifelike penetrating penetrative acuate intense incisive
+acute.a :: 2 :: discriminating
+right.r :: 1 :: mighty powerful
+right.r :: 2 :: decent decently
+right.r :: 3 :: correctly properly
+right.r :: 4 :: aright
+right.r :: 5 :: justly
+right.r :: 6 :: mightily
+right.r :: 7 :: flop
+cross.a :: 1 :: grumpy grouchy crabby fussy crabbed
+cross.a :: 2 :: transverse transversal
+cross.a :: 3 :: thwartwise
+cross.a :: 4 :: ill-tempered bad-tempered
+clear.a :: 1 :: unclouded decipherable readable percipient
+clear.a :: 2 :: unmortgaged
+clear.a :: 3 :: exonerated exculpated vindicated cleared absolved
+clear.a :: 4 :: well-defined
+clear.a :: 5 :: open
+clear.a :: 6 :: light
+clear.a :: 7 :: clean-cut clear-cut clean
+new.a :: 1 :: newfangled unexampled New Modern
+new.a :: 2 :: fresh raw
+new.a :: 3 :: young
+new.a :: 4 :: novel
+saint.n :: 1 :: angel fakir deity god Buddha immortal divinity
+saint.n :: 2 :: nonpareil crackerjack
+saint.n :: 3 :: faquir faqir
+saint.n :: 4 :: jimdandy
+saint.n :: 5 :: apotheosis
+saint.n :: 6 :: jimhickey
+saint.n :: 7 :: model
+saint.n :: 8 :: ideal
+saint.n :: 9 :: nonesuch
+saint.n :: 10 :: nonsuch
+saint.n :: 11 :: humdinger
+saint.n :: 12 :: fakeer
+saint.n :: 13 :: paragon
