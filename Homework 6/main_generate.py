@@ -10,10 +10,10 @@ import time, math
 all_characters = string.printable
 n_characters = len(all_characters)
 
-
 # Load data 
-text_directory = '/jane_austen.txt'
-file = unidecode.unidecode(open(root_directory + text_directory, encoding = 'utf-8', errors = 'ignore').read())
+root_directory = '../data'
+text_directory = 'jane_austen.txt'
+file = open(root_directory + text_directory, encoding = 'UTF-8', errors = 'ignore').read()
 file_len = len(file)
 
 chunk_len = 200
