@@ -1,6 +1,3 @@
-pip install unidecode
-
-import unidecode
 import string
 import random
 import re
@@ -11,7 +8,7 @@ all_characters = string.printable
 n_characters = len(all_characters)
 
 # Load data 
-root_directory = '../data'
+root_directory = '../data/'
 text_directory = 'jane_austen.txt'
 file = open(root_directory + text_directory, encoding = 'UTF-8', errors = 'ignore').read()
 file_len = len(file)
