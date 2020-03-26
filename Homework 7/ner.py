@@ -3,7 +3,7 @@ import nltk
 nltk.download('conll2002')
 from nltk.corpus import conll2002
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.linear_model import Perceptron
+from sklearn.linear_model import Perceptron, RidgeClassifier, PassiveAggressiveClassifier
 from sklearn.metrics import precision_recall_fscore_support
 import pickle
 
@@ -26,8 +26,11 @@ def hasApost(word):
 def hasHyph(word):
   return int('-' in word)
 
-def hasNN(pos):
-  return int('NN' in pos)
+def hasNC(pos):
+  return int('NC' in pos)
+
+def hasAQ(pos):
+  return int('AQ' in pos)
 
 def isCap(word):
     ## if first letter of the word is capitalized
@@ -36,6 +39,8 @@ def isCap(word):
 def hasCap(word):
     ## if any letter of the word is capitalized or not
   return int(word.islower())
+
+accents = 'ÂÃÄÀÁÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ'
 
 def hasAcc(word):
   for char in word:
@@ -53,6 +58,12 @@ def prefix(word):
 def suffix(word):
   return word[-4:]
 
+def wordshape(word):
+    import re
+    t1 = re.sub('[A-Z]', 'X', word)
+    t2 = re.sub('[a-z]', 'x', t1)
+    return re.sub('[0-9]', 'd', t2)
+
 def getfeats(word, pos_tag, o):
   """ This takes the word in question and
   the offset with respect to the instance
@@ -60,28 +71,29 @@ def getfeats(word, pos_tag, o):
   o = str(o)
   features = [
               (o + 'word', word),
+              (o + 'shape', wordshape(word)),
               # TODO: add more features here.
-              (o + 'hasDot', hasDot(word)),
+              # (o + 'hasDot', hasDot(word)),
               (o + 'hasApost', hasApost(word)),
               (o + 'hasHyph', hasHyph(word)),
-              (o + 'hasNN', hasNN(pos_tag)),
+              (o + 'hasNC', hasNN(pos_tag)),
+              (o + 'hasAQ', hasNN(pos_tag)),
               (o + 'isCap', isCap(word)),
               (o + 'hasCap', hasCap(word)),
-              # (o + 'hasAcc', hasAcc(word)),
-              (o + 'hasDig', hasDig(word)),
+              (o + 'hasAcc', hasAcc(word)),
+              # (o + 'hasDig', hasDig(word)),
               (o + 'prefix', prefix(word)),
               (o + 'suffix', suffix(word))
               ]
   return features
     
-
 def word2features(sent, i):
   """ The function generates all features
   for the word at position i in the
   sentence."""
   features = []
   # the window around the token
-  for o in [-1,0,1]:
+  for o in [-3,-2,-1,0,1,2,3]:
     if i+o >= 0 and i+o < len(sent):
       word = sent[i+o][0]
       pos_tag = sent[i+o][1]
@@ -104,7 +116,9 @@ if __name__ == "__main__":
   vectorizer = DictVectorizer()
   X_train = vectorizer.fit_transform(train_feats)
 
-  model = Perceptron(verbose = 1)
+  # model = Perceptron(verbose = 1, max_iter = 2000)
+  # model = RidgeClassifier()
+  model = PassiveAggressiveClassifier(verbose = 1, loss = 'squared_hinge')
   model.fit(X_train, train_labels)
   pickle.dump(model, open('drive/My Drive/CIS-530/Homework 7/Results/model', 'wb'))
 
