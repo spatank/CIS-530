@@ -17,7 +17,6 @@ class HearstPatterns(object):
         # so, what this means is that if you apply the first pattern,
         self.__hearst_patterns = [
                 ("(NP_\w+ (, )?such as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
-
                 ''' IMPLEMENT ADDITIONAL HEARST PATTERNS HERE '''
             ]
 
@@ -85,21 +84,17 @@ class HearstPatterns(object):
         np_tagged_sentences = self.chunk(rawtext)
 
         for sentence in np_tagged_sentences:
-
             for (hearst_pattern, parser) in self.__hearst_patterns:
                 matches = re.search(hearst_pattern, sentence)
                 if matches:
                     match_str = matches.group(0)
-
                     nps = [a for a in match_str.split() if a.startswith("NP_")]
-
                     if parser == "first":
                         hypernym = nps[0]
                         hyponyms = nps[1:]
                     else:
                         hypernym = nps[-1]
                         hyponyms = nps[:-1]
-
                     for i in range(len(hyponyms)):
                         hypo_hypernyms.append(
                             (self.clean_hyponym_term(hyponyms[i]),
