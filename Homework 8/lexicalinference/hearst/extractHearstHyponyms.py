@@ -29,8 +29,8 @@ def extractHearstPatterns(inputwikifile, hearstPatterns):
             line_split = line.split("\t")
             sentence, lemma_sent = line_split[0].strip(), line_split[1].strip()
 
-            hypo_hyper_pairs = hearstPatterns.find_hyponyms(sentence)
-            # hypo_hyper_pairs = hearstPatterns.find_hyponyms(lemma_sent)
+            # hypo_hyper_pairs = hearstPatterns.find_hyponyms(sentence)
+            hypo_hyper_pairs = hearstPatterns.find_hyponyms(lemma_sent)
 
             hearstExtractions.extend(hypo_hyper_pairs)
 

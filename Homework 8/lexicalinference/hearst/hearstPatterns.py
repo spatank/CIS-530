@@ -29,6 +29,12 @@ class HearstPatterns(object):
             ("(NP_[\w\-]+ (, )?especially (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first")
         ]
 
+    # self.__hearst_patterns = [
+    #         ("(NP_\w+ (, )?such as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
+    #         ("(NP_\w+ as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
+    #         ("((NP_\w+ ?(, )?)+(and |or )?NP_\w+)", "second"),
+    #         ("(NP_\w+ (, )?including (NP_\w+ ?(, )?(and |or )?)+)", "first")
+    #     ]
 
     if extended:
       self.__hearst_patterns.extend([
@@ -37,6 +43,9 @@ class HearstPatterns(object):
             ])
 
     self.__pos_tagger = PerceptronTagger()
+
+  def getPatterns(self):
+    return self.__hearst_patterns
     
   def prepare(self, rawtext):
     # To process text in NLTK format
@@ -48,12 +57,10 @@ class HearstPatterns(object):
 
   def chunk(self, rawtext):
     sentences = self.prepare(rawtext.strip())
-    # print(sentences)
 
     all_chunks = []
     for sentence in sentences:
       chunks = self.__np_chunker.parse(sentence)
-      # print(chunks)
       all_chunks.append(self.prepare_chunks(chunks))
 
     # two or more NPs next to each other should be merged into a single NP,
@@ -97,11 +104,9 @@ class HearstPatterns(object):
     np_tagged_sentences = self.chunk(rawtext)
     
     for sentence in np_tagged_sentences:
-      # print(sentence)
       for (hearst_pattern, parser) in self.__hearst_patterns:
         matches = re.search(hearst_pattern, sentence)
         if matches:
-          # print(hearst_pattern)
           match_str = matches.group(0)
           nps = [a for a in match_str.split() if a.startswith("NP_")]
           if parser == "first":
@@ -112,7 +117,6 @@ class HearstPatterns(object):
             hyponyms = nps[:-1]
             
           for i in range(len(hyponyms)):
-            # print(hyponyms[i])
             hypo_hypernyms.append(
                 (self.clean_hyponym_term(hyponyms[i]),
                  self.clean_hyponym_term(hypernym)))
@@ -120,7 +124,8 @@ class HearstPatterns(object):
     return hypo_hypernyms
 
   def clean_hyponym_term(self, term):
-    return term.replace("NP_", "").replace("_", " ")
+    term = term.replace("NP_", "").replace("_", " ").split()[-1]
+    return term
 
 
 if __name__=='__main__':
