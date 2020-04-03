@@ -19,27 +19,38 @@ class HearstPatterns(object):
     # now define the Hearst patterns
     # format is <hearst-pattern>, <hypernym_location>
     # so, what this means is that if you apply the first pattern,
+
+    # self.__hearst_patterns = [
+    #           ("(NP_[\w\-]+ (, )?especially (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first")
+    #       ]
     
+    # self.__hearst_patterns = [
+    #         ("(NP_[\w\-]+ (, )?such as (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
+    #         ("(NP_such_[\w\-]+ as (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
+    #         # `such' (JJ) is being merged with the hypernym, workaround above
+    #         ("((NP_[\w\-]+ ?(, )?)+(and |or )?NP_other_[\w\-]+)", "second"),
+    #         ("(NP_[\w\-]+ (, )?including (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
+    #         ("(NP_[\w\-]+ (, )?especially (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
+    #     ]
+
     self.__hearst_patterns = [
             ("(NP_[\w\-]+ (, )?such as (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
             ("(NP_such_[\w\-]+ as (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
             # `such' (JJ) is being merged with the hypernym, workaround above
             ("((NP_[\w\-]+ ?(, )?)+(and |or )?NP_other_[\w\-]+)", "second"),
             ("(NP_[\w\-]+ (, )?including (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
-            ("(NP_[\w\-]+ (, )?especially (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first")
+            ("(NP_[\w\-]+ (, )?especially (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first"),
+            ("(NP_[\w]+ (, )?has been (NP_[\w]+ ? (, )?(and |or )?)+)", "second"),
+            ("(NP_[\w]+ (, )?are otherwise known as (NP_[\w]+ ? (, )?(and |or )?)+)", "first"),
+            ("(NP_[\w]+ (, )?is (NP_a_[\w]+ ? (, )?(and |or )?)+)", "second"),
+            ("(NP_[\w\-]+ of (NP_[\w\-]+) (, )?includes (NP_[\w\-]+ ? (, )?(and |or )?)+)", "third"),
+            ("(there is NP_[\w\-]+ (, )?possibly (NP_[\w\-]+ ? (, )?(and |or )?)+)", "first")
         ]
 
-    # self.__hearst_patterns = [
-    #         ("(NP_\w+ (, )?such as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
-    #         ("(NP_\w+ as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
-    #         ("((NP_\w+ ?(, )?)+(and |or )?NP_\w+)", "second"),
-    #         ("(NP_\w+ (, )?including (NP_\w+ ?(, )?(and |or )?)+)", "first")
-    #     ]
 
     if extended:
       self.__hearst_patterns.extend([
             ("(NP_\w+ (, )?such as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
-            ''' IMPLEMENT ADDITIONAL PATTERNS HERE '''
             ])
 
     self.__pos_tagger = PerceptronTagger()
@@ -112,7 +123,10 @@ class HearstPatterns(object):
           if parser == "first":
             hypernym = nps[0]
             hyponyms = nps[1:]
-          else:
+          elif parser == "third":
+            hypernym = nps[0]
+            hyponyms = nps[2:]
+          else: # usually "second" 
             hypernym = nps[-1]
             hyponyms = nps[:-1]
             
