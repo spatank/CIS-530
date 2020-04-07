@@ -1,0 +1,7 @@
+python extractHearstHyponyms.py --inputwikifile /Users/sppatankar/Developer/CIS-530/Homework\ 8/Data/wikipedia_sentences.txt --outputfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/Data/extracted_hyponyms_lemma.tsv
+
+python extractDatasetPredictions.py --extractionsfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/Data/extracted_hyponyms_lemma.tsv  --trdata /Users/sppatankar/Developer/CIS-530/Homework\ 8/bless2011/data_lex_train.tsv --valdata /Users/sppatankar/Developer/CIS-530/Homework\ 8/bless2011/data_lex_val.tsv --testdata /Users/sppatankar/Developer/CIS-530/Homework\ 8/bless2011/data_lex_test.tsv --trpredfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/lexicalinference/hearst_train.txt --valpredfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/lexicalinference/hearst_val.txt --testpredfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/lexicalinference/hearst.txt
+
+python computePRF.py --goldfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/bless2011/data_lex_train.tsv --predfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/lexicalinference/hearst_train.txt
+
+python computePRF.py --goldfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/bless2011/data_lex_val.tsv --predfile /Users/sppatankar/Developer/CIS-530/Homework\ 8/lexicalinference/hearst_val.txt
