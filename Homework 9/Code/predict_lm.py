@@ -34,6 +34,22 @@ import math
 
 import util
 
+def start_pad(n):
+    ''' Returns a padding string of length n to append to the front of text
+        as a pre-processing step to building n-grams '''
+    return '~' * n
+
+def ngrams(n, text):
+    ''' Returns the ngrams of the text as tuples where the first element is
+        the length-n context and the second is the character '''
+    text = start_pad(n) + text
+    grams = []
+    for j in range(len(text)-n):
+        context = text[j:j+n]
+        char = text[j+n]
+        grams.append((context, char))
+    return grams
+
 
 def score_subjects(data, lm_pos, lm_neg):
     '''
@@ -56,20 +72,37 @@ def score_subjects(data, lm_pos, lm_neg):
     
     scores = {}
     ##### BEGIN SOLUTION #####
-    
-    # (your code here)
-    
+    order_pos = len(list(lm_pos.keys())[0])
+    order_neg = len(list(lm_neg.keys())[0])
+
+    for subjID, tweets in subj2tweets.items():
+        user_scores = []
+        for idx, tweet in enumerate(tweets):
+            if idx % 10 == 0:
+                C = 0
+                grams = ngrams(order_pos, tweet)
+                num = 0
+                for (history, char) in grams:
+                    if history in lm_pos:
+                        if history in lm_neg:
+                            if char in lm_pos[history]:
+                                if char in lm_neg[history]:
+                                    prob_pos = lm_pos[history][char]
+                                    prob_neg = lm_neg[history][char]
+                                    num += (np.log(prob_pos) - np.log(prob_neg))
+                                    C += 1
+                if C == 0:
+                    continue
+                user_scores.append(num/C)
+        scores[subjID] = np.median(user_scores)
     ##### END SOLUTION #####
     
     return scores
-
-
 
 def write_rankings(user_scores, writeFile):
     sorted_dict = sorted(user_scores.items(), key=operator.itemgetter(1), reverse=True)
     with open(writeFile, 'w') as out:
         for user, score in sorted_dict:
-            print(user)
             try:
                 out.write(user + '\n')
             except:
@@ -87,7 +120,7 @@ if __name__ == '__main__':
     lm_pos, order_pos = util.load_lm(condPOSmodel)
     lm_neg, order_neg = util.load_lm(condNEGmodel)
     
-    assert order_pos==order_neg
+    assert order_pos == order_neg
     
     subject_scores = score_subjects(data, lm_pos, lm_neg)
     

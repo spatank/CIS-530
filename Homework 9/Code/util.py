@@ -14,7 +14,7 @@ import json
 import pickle as pkl
 
 BASEDIR = '..'
-
+# BASEDIR = 'drive/My Drive/CIS-530/Homework 9/'
 
 ###################################################
 # Functions for loading and extracting data

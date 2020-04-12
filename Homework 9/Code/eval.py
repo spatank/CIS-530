@@ -47,11 +47,16 @@ def average_precision(rankedpeople, goldconditions, condPOS, condNEG):
     :param condNEG: string; condition to use as negative class
     '''
     ap = 0.0
+
+    # python3 eval.py ptsd control ../output/random/dev_ptsd_control.txt
     
     ## Solution start
-    
-    # (your code here)
-    
+    R = 0
+    for idx, person in enumerate(rankedpeople):
+        if goldconditions[person] == condPOS:
+            R += 1
+            ap += R/(idx+1)
+    ap = ap/R
     ## Solution end
     
     return ap

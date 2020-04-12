@@ -15,7 +15,7 @@ from collections import Counter, defaultdict
 
 import util
 
-def train_char_lm(fname, order=1, add_k=0.5):
+def train_char_lm(fname, order = 1, add_k = 1):
     '''
     Train a character ngram language model.
     :param fname: string; filename containing corpus
@@ -25,6 +25,8 @@ def train_char_lm(fname, order=1, add_k=0.5):
     :returns: dict; maps from n-grams of length order to a list of tuples. 
               Each tuple consists of a possible next character and its probability.
     '''
+
+    print(order, add_k)
 
     data = codecs.open(fname, 'r', encoding='utf8', errors='replace').read()
     lm = defaultdict(Counter)
@@ -49,12 +51,11 @@ def train_char_lm(fname, order=1, add_k=0.5):
     
     def normalize(counter):
         s = float(sum(counter.values()))
-        return [(c,cnt/(s + ((len(vocab) * add_k)))) for c,cnt in counter.items()] # adjusted denominator
+        return dict([(c,cnt/(s + ((len(vocab) * add_k)))) for c,cnt in counter.items()]) # adjusted denominator
     
     outlm = {hist:normalize(chars) for hist, chars in lm.items()}
     
     return outlm 
-
 
 if __name__ == '__main__':
     
